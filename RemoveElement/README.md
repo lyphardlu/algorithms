@@ -1,4 +1,4 @@
-Approach  
+# Approach  
 	Initialize index to 0, which represents the current position for the next non-target element.  
 	Iterate through each element of the input array using the i pointer.  
 	For each element nums[i], check if it is equal to the target value.  
@@ -8,8 +8,8 @@ Approach
 	Continue this process until all elements in the array have been processed.  
 	Finally, return the value of index, which represents the length of the modified array.  
  
-Complexity  
-	Time complexity:  
+# Complexity
+## Time complexity:
 	O(n)  
-	Space complexity:  
+## Space complexity:  
 	O(1)  
