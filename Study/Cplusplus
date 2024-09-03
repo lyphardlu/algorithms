@@ -38,3 +38,215 @@ unordered_multimap: Like unordered_map, but allows multiple entries with the sam
 unordered_set: A collection of unique keys, stored in an arbitrary order. Provides faster access than set in most cases.
 
 unordered_multiset: Like unordered_set, but allows duplicate keys.
+
+
+The syntax for (int num : d) is a feature in C++ known as a range-based for loop. It was introduced in C++11 and provides a more concise and readable way to iterate over elements in a container, such as deque, vector, list, and others.
+
+How It Works:
+d is a container (in your example, a deque<int>).
+int num declares a variable num that will hold the value of each element as the loop iterates over the container d.
+The loop automatically iterates over each element in d, assigning the current element to num during each iteration.
+Under the Hood:
+When you use for (int num : d), the C++ compiler translates it to something like this:
+
+cpp
+Copy code
+for (auto it = d.begin(); it != d.end(); ++it) {
+    int num = *it;
+    // loop body
+}
+
+1. vector
+A vector is a dynamic array that can resize itself automatically when elements are added or removed.
+
+cpp
+Copy code
+#include <iostream>
+#include <vector>
+
+int main() {
+    std::vector<int> numbers;
+
+    // Adding elements
+    numbers.push_back(10);
+    numbers.push_back(20);
+    numbers.push_back(30);
+
+    // Accessing elements
+    std::cout << "First element: " << numbers[0] << std::endl;
+
+    // Iterating over the elements
+    std::cout << "All elements: ";
+    for (int num : numbers) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+2. deque
+A deque (double-ended queue) allows insertion and deletion at both ends efficiently.
+
+cpp
+Copy code
+#include <iostream>
+#include <deque>
+
+int main() {
+    std::deque<int> d;
+
+    // Adding elements to both ends
+    d.push_back(10);
+    d.push_front(20);
+
+    // Accessing elements
+    std::cout << "First element: " << d.front() << std::endl;
+    std::cout << "Last element: " << d.back() << std::endl;
+
+    // Iterating over the elements
+    std::cout << "All elements: ";
+    for (int num : d) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+3. list
+A list is a doubly-linked list, which allows efficient insertion and deletion from anywhere in the list.
+
+cpp
+Copy code
+#include <iostream>
+#include <list>
+
+int main() {
+    std::list<int> lst;
+
+    // Adding elements
+    lst.push_back(10);
+    lst.push_front(20);
+    lst.push_back(30);
+
+    // Iterating over the elements
+    std::cout << "All elements: ";
+    for (int num : lst) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    // Deleting an element
+    lst.pop_front();
+
+    std::cout << "After pop_front: ";
+    for (int num : lst) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+4. map
+A map is an associative container that stores key-value pairs, where each key is unique.
+
+cpp
+Copy code
+#include <iostream>
+#include <map>
+
+int main() {
+    std::map<int, std::string> employees;
+
+    // Adding key-value pairs
+    employees[101] = "Alice";
+    employees[102] = "Bob";
+    employees[103] = "Charlie";
+
+    // Accessing elements by key
+    std::cout << "Employee with ID 102: " << employees[102] << std::endl;
+
+    // Iterating over the map
+    std::cout << "All employees: " << std::endl;
+    for (const auto& pair : employees) {
+        std::cout << "ID: " << pair.first << ", Name: " << pair.second << std::endl;
+    }
+
+    return 0;
+}
+5. unordered_map
+An unordered_map is similar to a map but does not maintain the order of elements. It uses a hash table for storage.
+
+cpp
+Copy code
+#include <iostream>
+#include <unordered_map>
+
+int main() {
+    std::unordered_map<std::string, int> fruitPrices;
+
+    // Adding key-value pairs
+    fruitPrices["Apple"] = 50;
+    fruitPrices["Banana"] = 20;
+    fruitPrices["Cherry"] = 30;
+
+    // Accessing elements by key
+    std::cout << "Price of Apple: " << fruitPrices["Apple"] << std::endl;
+
+    // Iterating over the unordered_map
+    std::cout << "All fruits: " << std::endl;
+    for (const auto& pair : fruitPrices) {
+        std::cout << "Fruit: " << pair.first << ", Price: " << pair.second << std::endl;
+    }
+
+    return 0;
+}
+6. set
+A set is an associative container that stores unique elements in a specific order.
+
+cpp
+Copy code
+#include <iostream>
+#include <set>
+
+int main() {
+    std::set<int> uniqueNumbers;
+
+    // Adding elements
+    uniqueNumbers.insert(10);
+    uniqueNumbers.insert(20);
+    uniqueNumbers.insert(10); // Duplicate element, will not be added
+
+    // Iterating over the set
+    std::cout << "Unique numbers: ";
+    for (int num : uniqueNumbers) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+7. unordered_set
+An unordered_set is similar to a set but does not maintain any order.
+
+cpp
+Copy code
+#include <iostream>
+#include <unordered_set>
+
+int main() {
+    std::unordered_set<std::string> cities;
+
+    // Adding elements
+    cities.insert("New York");
+    cities.insert("Los Angeles");
+    cities.insert("New York"); // Duplicate element, will not be added
+
+    // Iterating over the unordered_set
+    std::cout << "Cities: ";
+    for (const auto& city : cities) {
+        std::cout << city << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
